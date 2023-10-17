@@ -109,6 +109,7 @@ const showChose = ()=>{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #fff;
   .center_box {
     width: 58%;
     display: flex;

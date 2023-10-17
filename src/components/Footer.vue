@@ -32,7 +32,6 @@
             </div>
            </div>
             <div class="bg"></div>
-           
         </div>
     </div>
 </template>
@@ -75,7 +74,7 @@ const linksList = ref([
     .norem-container_box {
         width: 100%;
         height: 240px;
-        position: fixed;
+        // position: fixed;
         bottom: 0;
         left: 0;
         overflow: visible;
