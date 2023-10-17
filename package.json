@@ -1,0 +1,28 @@
+{
+  "name": "vue-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "aos": "^3.0.0-beta.6",
+    "axios": "^1.5.0",
+    "element-plus": "^2.3.12",
+    "lib-flexible": "^0.3.2",
+    "postcss-pxtorem": "^6.0.0",
+    "sass": "^1.64.2",
+    "vant": "^4.6.7",
+    "vue": "^3.3.4",
+    "vue-fullpage.js": "^0.2.15",
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5"
+  }
+}
