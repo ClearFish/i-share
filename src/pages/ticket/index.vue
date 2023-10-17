@@ -236,6 +236,7 @@ const ticketsList = ref([
                             font-style: normal;
                             font-weight: 600;
                             line-height: 24px; /* 150% */
+                            cursor: pointer;
                         }
                         .set_box {
                             display: flex;
@@ -255,11 +256,15 @@ const ticketsList = ref([
                                 border-radius: 8px;
                                 background: #E94C89;
                                 color: #fff;
+                                cursor: pointer;
                         }
                         .add_svg {
                             display: flex;
                             align-items: center;
                             gap: 6px;
+                            img {
+                                cursor: pointer;
+                            }
                         }
                     }
                     .add_fake {
