@@ -74,7 +74,7 @@ button:focus-visible {
   width: 100%;
   margin: 0 auto;
   /* padding: 2rem; */
-  text-align: center;
+  text-align: left;
 }
 li {
   list-style: none;

@@ -25,5 +25,18 @@ export default {
     for_free_content: "收款不收取任何费用：向您的银行账户转账是免费的，并且在您达到最低金额后会自动处理。",
     product_data: "保护数据",
     product_data_content: "如果您需要共享 ID、密码、许可证号或其他信息等机密数据，IShare 是保护这些数据的正确解决方案。您的交易将通过强加密 (AES 256) 进行传输和存储，以确保您的隐私。",
-    normal_ques: "经常问的问题"
+    normal_ques: "经常问的问题",
+    my_ticket: "我的车票",
+    in_car: "已上车",
+    out_car: "已下车",
+    join_group: "加入售后群",
+    oreder_number: "订单号",
+    start_time: "开始时间",
+    end_Time: "到期时间",
+    account: "账号",
+    password: "密码",
+    use_guid: "使用说明",
+    check_now: "立即查看",
+    seat_number: "座位号",
+    account_renew: "原号续费"
 }
