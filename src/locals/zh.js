@@ -15,5 +15,15 @@ export default {
     music: "音乐",
     storage: '储存',
     learn: "学习",
-    develop: "开发"
+    develop: "开发",
+    only_title: "享受专属优势",
+    laws_service: "法律服务",
+    laws_service_content: "是的，共享订阅是合法的。内容或服务提供商本身允许您共享。 IShare为您提供简单、更安全的支付和退款管理服务。",
+    product_plan: "买家保护计划",
+    product_plan_cotnent: "您的所有购买都受到保护：我们保证订阅的正常运行，或者免费为您退款。付款后，您就可以访问共享订阅。如果您有问题，我们的团队将检查并在必要时免费退款给您。",
+    for_free: "您分享时不收取任何费用。",
+    for_free_content: "收款不收取任何费用：向您的银行账户转账是免费的，并且在您达到最低金额后会自动处理。",
+    product_data: "保护数据",
+    product_data_content: "如果您需要共享 ID、密码、许可证号或其他信息等机密数据，IShare 是保护这些数据的正确解决方案。您的交易将通过强加密 (AES 256) 进行传输和存储，以确保您的隐私。",
+    normal_ques: "经常问的问题"
 }

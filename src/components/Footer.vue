@@ -73,11 +73,14 @@ const linksList = ref([
     position: relative;
     .norem-container_box {
         width: 100%;
-        height: 240px;
+        height: 450px;
         // position: fixed;
         bottom: 0;
         left: 0;
         overflow: visible;
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 44px;
         .content_box {
             width: 1200px;
             margin: 0 auto;

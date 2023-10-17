@@ -34,6 +34,20 @@ const listsArr = ref([
    {name:'Netflix',buyNum:'5296',specials:['全球解锁','4K高清','支持杜比','单月起售'],price:'14.9',img:Img},
    {name:'Netflix',buyNum:'5296',specials:['全球解锁','4K高清','支持杜比','单月起售'],price:'14.9',img:Img}
 ])
+const featsList = ref([
+   {title:t('laws_service'),content:t('laws_service_content')},
+   {title:t('product_plan'),content:t('product_plan_cotnent')},
+   {title:t('for_free'),content:t('for_free_content')},
+   {title:t('product_data'),content:t('product_data_content')}
+])
+const quesList = ref([
+   {title:'这项服务的费用是多少？',answer:"是的，共享订阅是合法的。还有很多人没有等到这样做。内容或服务提供商本身允许您共享，例如带有 Premium 家庭或双人计划的 Spotify。如有疑问，请查看这些服务的条款和条件或我们的在线指南。 IShare 仅提供管理这些共享组的退款的功能，并使您更轻松、更安全。"},
+   {title:'这项服务的费用是多少？',answer:"是的，共享订阅是合法的。还有很多人没有等到这样做。内容或服务提供商本身允许您共享，例如带有 Premium 家庭或双人计划的 Spotify。如有疑问，请查看这些服务的条款和条件或我们的在线指南。 IShare 仅提供管理这些共享组的退款的功能，并使您更轻松、更安全。"},
+   {title:'这项服务的费用是多少？',answer:"是的，共享订阅是合法的。还有很多人没有等到这样做。内容或服务提供商本身允许您共享，例如带有 Premium 家庭或双人计划的 Spotify。如有疑问，请查看这些服务的条款和条件或我们的在线指南。 IShare 仅提供管理这些共享组的退款的功能，并使您更轻松、更安全。"},
+   {title:'这项服务的费用是多少？',answer:"是的，共享订阅是合法的。还有很多人没有等到这样做。内容或服务提供商本身允许您共享，例如带有 Premium 家庭或双人计划的 Spotify。如有疑问，请查看这些服务的条款和条件或我们的在线指南。 IShare 仅提供管理这些共享组的退款的功能，并使您更轻松、更安全。"},
+   {title:'这项服务的费用是多少？',answer:"是的，共享订阅是合法的。还有很多人没有等到这样做。内容或服务提供商本身允许您共享，例如带有 Premium 家庭或双人计划的 Spotify。如有疑问，请查看这些服务的条款和条件或我们的在线指南。 IShare 仅提供管理这些共享组的退款的功能，并使您更轻松、更安全。"},
+])
+const activeNames = ref([0])
 </script>
 
 <template>
@@ -68,6 +82,27 @@ const listsArr = ref([
                </div>
             </li>
          </ul>
+      </div>
+      <div class="only_feats">
+         <p class="title">{{t('only_title')}}</p>
+         <div class="lists">
+            <ul>
+               <li v-for="(item,index) in featsList" :key="index">
+                  <div class="container">
+                     <p class="title">{{item.title}}</p>
+                     <p class="cont">{{item.content}}</p>
+                  </div>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <div class="only_feats ques_cont">
+         <p class="title">{{t('normal_ques')}}</p>
+          <el-collapse v-model="activeNames" @change="handleChange">
+             <el-collapse-item :title="item.title" :name="index" v-for="(item,index) in quesList" :key="index">
+               <div class="item_content">{{item.answer}}</div>
+             </el-collapse-item>
+          </el-collapse>
       </div>
    </div>
 </template>
@@ -215,6 +250,109 @@ const listsArr = ref([
                   font-style: normal;
                   font-weight: 600;
                   line-height: 24px; /* 150% */
+               }
+            }
+         }
+      }
+   }
+   .only_feats {
+      width: 100%;
+      .title {
+         color:  #1D222A;
+         font-size: 48px;
+         font-style: normal;
+         font-weight: 600;
+         line-height: 56px; /* 116.667% */
+         margin-bottom: 48px;
+      }
+      .lists {
+         width: 100%;
+         ul {
+            width: 100%;
+            display:flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            li {
+               width: 49%;
+               box-sizing: border-box;
+               padding: 24px;
+               border-radius: 12px;
+               margin-bottom: 24px;
+               .container {
+                  background: #fff;
+                  border-radius: 12px;
+                  padding: 24px;
+                  box-sizing: border-box;
+                  p {
+                     text-align: left;
+                  }
+                  .title {
+                     color:  #1D222A;
+                     font-size: 20px;
+                     font-style: normal;
+                     font-weight: 600;
+                     line-height: 28px; /* 140% */
+                     margin-bottom: 10px;
+                  }
+                  .cont {
+                     color: #4E596A;
+                     font-size: 16px;
+                     font-style: normal;
+                     font-weight: 500;
+                     line-height: 24px; /* 150% */
+                  }
+               }
+               &:nth-child(1) {
+                  border-radius: 12px;
+                  background: linear-gradient(99deg, #B2FDF3 0%, #E2FFDA 100%);
+               }
+               &:nth-child(2) {
+                  border-radius: 12px;
+                  background: linear-gradient(99deg, #FCD0BB 0%, #F6D8FA 100%);
+               }
+               &:nth-child(3) {
+                  border-radius: 12px;
+                  background: linear-gradient(99deg, #FFF8B8 0%, #FFD2E5 100%);
+               }
+               &:nth-child(4) {
+                  border-radius: 12px;
+                  background: linear-gradient(99deg, #EBCCFF 0%, #A6FAFF 100%);
+               }
+            }
+         }
+      }
+   }
+   .ques_cont {
+      margin-top: 120px;
+      ::v-deep {
+         .el-collapse {
+            border: none !important;
+            .el-collapse-item {
+               margin-bottom: 10px;
+               .el-collapse-item__header {
+                  color: #1D222A;
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: 28px; /* 140% */
+                  border-radius: 12px;
+                  background:  #F5F5F5;
+                  padding-left: 24px;
+               }
+               .el-collapse-item__content {
+                  border: none !important;
+                  padding: 24px;
+                  .item_content {
+                     text-align: left;
+                     color:  #4E596A;
+                     font-size: 16px;
+                     font-style: normal;
+                     font-weight: 500;
+                     line-height: 24px; /* 150% */
+                  }
+               }
+               .el-collapse-item__wrap {
+                  border-bottom: none !important;
                }
             }
          }
