@@ -9,9 +9,9 @@ const isMobile = inject('isMobile')
 const router = useRouter()
 const route = useRoute()
 const menuList = computed(()=>[
-  {name:t('home'),url:''},
-  {name:t('ticket'),url:''},
-  {name:t('promotion'),url:''},
+  {name:t('home'),url:'/'},
+  {name:t('ticket'),url:'/ticket'},
+  {name:t('promotion'),url:'/promotion'},
   {name:t('order'),url:''},
   {name:t('mine'),url:''},
 ])
@@ -24,7 +24,8 @@ lang.value = localStorage.getItem('lang') || 'zh'
 let chosedIndex = ref<number>(0)
 let showLange = ref<boolean>(false)
 const choesMenu = (item:any,index:number)=>{
-  chosedIndex.value = index
+  chosedIndex.value = index;
+  router.push(item.url)
 }
 const choseLang =(val:string)=>{
     locale.value = val;
@@ -110,6 +111,7 @@ const showChose = ()=>{
   justify-content: space-between;
   align-items: center;
   background: #fff;
+  z-index: 199;
   .center_box {
     width: 58%;
     display: flex;

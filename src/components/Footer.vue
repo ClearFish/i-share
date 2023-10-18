@@ -51,9 +51,9 @@ const toUrl = (url)=>{
      router.push(url)
 }
 const menuList = computed(()=>[
-  {name:t('home'),url:''},
-  {name:t('ticket'),url:''},
-  {name:t('promotion'),url:''},
+  {name:t('home'),url:'/'},
+  {name:t('ticket'),url:'/ticket'},
+  {name:t('promotion'),url:'/promotion'},
   {name:t('order'),url:''},
   {name:t('mine'),url:''},
 ])

@@ -38,5 +38,14 @@ export default {
     use_guid: "使用说明",
     check_now: "立即查看",
     seat_number: "座位号",
-    account_renew: "原号续费"
+    account_renew: "原号续费",
+    promote_user: "推荐新用户好友购买",
+    join_now: "立享",
+    return_funds: "返现",
+    return_funds_subtitle: "邀请新用户注册并购买成功，获取购买订单的10%金额返现",
+    copy_link: "复制链接",
+    progress_title: "如何参与邀请返现活动？",
+    progress_fir: "通过邀请链接邀请好友",
+    progress_sec: "好友注册账户并购买服务",
+    progress_third: "您即可获得返现奖励",
 }
