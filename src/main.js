@@ -24,7 +24,6 @@ const isMobile = () => {
 const app = createApp(App)
 app.provide('isMobile', isMobile())
 app.use(router)
-app.use(VueFullpage);
 app.use(i18n)
 app.use(ElementPlus)
 app.use(Picker)

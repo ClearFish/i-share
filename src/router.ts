@@ -3,6 +3,7 @@ import Home from  "@/pages/home/index.vue"
 import Ticket from  "@/pages/ticket/index.vue"
 import Promotion from  "@/pages/promotion/index.vue"
 import Order from "@/pages/order/index.vue"
+import Mine from "@/pages/mine/index.vue"
 const router = createRouter({
         history:createWebHashHistory(),
         routes:[
@@ -32,6 +33,11 @@ const router = createRouter({
                 name:'order',
                 path:'/order',
                 component:Order
+            },
+            {
+                name:'mine',
+                path:'/mine',
+                component:Mine
             }
         ]
     
