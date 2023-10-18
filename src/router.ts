@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from  "@/pages/home/index.vue"
 import Ticket from  "@/pages/ticket/index.vue"
 import Promotion from  "@/pages/promotion/index.vue"
-
+import Order from "@/pages/order/index.vue"
 const router = createRouter({
         history:createWebHashHistory(),
         routes:[
@@ -27,6 +27,11 @@ const router = createRouter({
                 name:'promotion',
                 path:'/promotion',
                 component:Promotion
+            },
+            {
+                name:'order',
+                path:'/order',
+                component:Order
             }
         ]
     

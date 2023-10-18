@@ -48,4 +48,9 @@ export default {
     progress_fir: "通过邀请链接邀请好友",
     progress_sec: "好友注册账户并购买服务",
     progress_third: "您即可获得返现奖励",
+    my_order: "我的订单",
+    no_pay: "待支付",
+    no_send: "待发货",
+    has_send: "已发货",
+    has_finished: "已完成"
 }

@@ -51,11 +51,11 @@ const toUrl = (url)=>{
      router.push(url)
 }
 const menuList = computed(()=>[
-  {name:t('home'),url:'/'},
+  {name:t('home'),url:'/home'},
   {name:t('ticket'),url:'/ticket'},
   {name:t('promotion'),url:'/promotion'},
-  {name:t('order'),url:''},
-  {name:t('mine'),url:''},
+  {name:t('order'),url:'/order'},
+  {name:t('mine'),url:'/mine'},
 ])
 const otherList = computed(()=>[
   {name:t('terms_use'),url:''},

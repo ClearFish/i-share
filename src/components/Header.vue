@@ -9,11 +9,11 @@ const isMobile = inject('isMobile')
 const router = useRouter()
 const route = useRoute()
 const menuList = computed(()=>[
-  {name:t('home'),url:'/'},
+  {name:t('home'),url:'/home'},
   {name:t('ticket'),url:'/ticket'},
   {name:t('promotion'),url:'/promotion'},
-  {name:t('order'),url:''},
-  {name:t('mine'),url:''},
+  {name:t('order'),url:'/order'},
+  {name:t('mine'),url:'/mine'},
 ])
 const langList = ref([
     {name:'简体中文',value:'zh',text:'简体中文'},
@@ -37,6 +37,7 @@ const choseLang =(val:string)=>{
 const showChose = ()=>{
     showLange.value = !showLange.value
 }
+console.log(route,"123123")
 </script>
 
 <template>
@@ -57,7 +58,7 @@ const showChose = ()=>{
         <div class="right">
             <div class="right_menu">
               <ul>
-                <li v-for="(item,index) in menuList" :key="index" :class="chosedIndex == index ? 'chosed':''" @click="choesMenu(item,index)">
+                <li v-for="(item,index) in menuList" :key="index" :class="route.path.indexOf(item.url) != -1 ? 'chosed':''" @click="choesMenu(item,index)">
                   <p>{{item.name}}</p>
                 </li>
               </ul>
