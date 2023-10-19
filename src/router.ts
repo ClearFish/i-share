@@ -4,6 +4,8 @@ import Ticket from  "@/pages/ticket/index.vue"
 import Promotion from  "@/pages/promotion/index.vue"
 import Order from "@/pages/order/index.vue"
 import Mine from "@/pages/mine/index.vue"
+import Goods from "@/pages/goods/index.vue"
+import Pay from "@/pages/pay/index.vue"
 const router = createRouter({
         history:createWebHashHistory(),
         routes:[
@@ -16,7 +18,22 @@ const router = createRouter({
                         name:'home',
                         path:"/home",
                         component:Home
-                    }
+                    },
+                    {
+                        name:'goods',
+                        path:'/goods',
+                        component:Goods
+                    },
+                    {
+                        name:'goods',
+                        path:'/goods',
+                        component:Goods
+                    },
+                    {
+                        name:'pay',
+                        path:'/pay',
+                        component:Pay
+                    },
                 ]
             },
             {
@@ -38,7 +55,8 @@ const router = createRouter({
                 name:'mine',
                 path:'/mine',
                 component:Mine
-            }
+            },
+            
         ]
     
 })

@@ -48,6 +48,12 @@ const quesList = ref([
    {title:'这项服务的费用是多少？',answer:"是的，共享订阅是合法的。还有很多人没有等到这样做。内容或服务提供商本身允许您共享，例如带有 Premium 家庭或双人计划的 Spotify。如有疑问，请查看这些服务的条款和条件或我们的在线指南。 IShare 仅提供管理这些共享组的退款的功能，并使您更轻松、更安全。"},
 ])
 const activeNames = ref([0])
+const buyNow = (item)=>{
+   router.push({
+      path:"/goods",
+      query:{id:item.buyNum}
+   })
+}
 </script>
 
 <template>
@@ -78,7 +84,7 @@ const activeNames = ref([0])
                </div>
                <div class="bottom">
                   <div class="left">￥{{item.price}}</div>
-                  <div class="buy">立即购买</div>
+                  <div class="buy" @click="buyNow(item)">立即购买</div>
                </div>
             </li>
          </ul>
@@ -111,6 +117,7 @@ const activeNames = ref([0])
 .norem-big_box {
    width: 1200px;
    margin: 0 auto;
+   min-height: 100vh;
    .top_content {
       margin-top: 176px;
       display: flex;

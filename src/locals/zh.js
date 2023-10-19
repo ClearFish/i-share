@@ -70,5 +70,16 @@ export default {
     redemption_center: "兑换中心",
     sure_redemption: "确认兑换",
     redemption_rules: "兑换码规则",
-    redemption_placeholder: "请输入您的兑换码"
+    redemption_placeholder: "请输入您的兑换码",
+    account_type: "账号类型",
+    car_type: "车位类型",
+    time_duration: "时长",
+    price_now: "当前价格",
+    can_use_coupon: "优惠卷张可用",
+    build_time: "成立时间",
+    company_link: "官网链接",
+    pay_info: "您的订单已提交成功，请尽快完成支付",
+    pay_goods: "付款商品",
+    receive_name: "收款方",
+    goods_price: "商品总价"
 }
