@@ -4,6 +4,10 @@ import { useI18n } from 'vue-i18n'
 import {getAuth} from "@/api/index.js"
 import { useRouter } from "vue-router";
 import Img from '@/assets/pc/home/neft.svg'
+import Img1 from '@/assets/pc/home/img1.svg'
+import Img2 from '@/assets/pc/home/img2.svg'
+import Img3 from '@/assets/pc/home/img3.svg'
+import Img4 from '@/assets/pc/home/img4.svg'
 const { t } = useI18n()
 const isMobile = inject('isMobile')
 const router = useRouter()
@@ -35,10 +39,10 @@ const listsArr = ref([
    {name:'Netflix',buyNum:'5296',specials:['全球解锁','4K高清','支持杜比','单月起售'],price:'14.9',img:Img}
 ])
 const featsList = ref([
-   {title:t('laws_service'),content:t('laws_service_content')},
-   {title:t('product_plan'),content:t('product_plan_cotnent')},
-   {title:t('for_free'),content:t('for_free_content')},
-   {title:t('product_data'),content:t('product_data_content')}
+   {title:t('laws_service'),content:t('laws_service_content'),img:Img1},
+   {title:t('product_plan'),content:t('product_plan_cotnent'),img:Img2},
+   {title:t('for_free'),content:t('for_free_content'),img:Img3},
+   {title:t('product_data'),content:t('product_data_content'),img:Img4}
 ])
 const quesList = ref([
    {title:'这项服务的费用是多少？',answer:"是的，共享订阅是合法的。还有很多人没有等到这样做。内容或服务提供商本身允许您共享，例如带有 Premium 家庭或双人计划的 Spotify。如有疑问，请查看这些服务的条款和条件或我们的在线指南。 IShare 仅提供管理这些共享组的退款的功能，并使您更轻松、更安全。"},
@@ -60,7 +64,7 @@ const buyNow = (item)=>{
    <div :class="isMobile ? 'norem-big_box m_big_box':'norem-big_box'">
       <div class="top_content">
          <p class="title">{{$t('home_title')}}</p>
-         <p class="sub_title">{{$t('home_sub_title')}}</p>
+         <!-- <p class="sub_title">{{$t('home_sub_title')}}</p> -->
       </div>
       <div class="title_list">
          <ul>
@@ -89,17 +93,33 @@ const buyNow = (item)=>{
             </li>
          </ul>
       </div>
+      <div class="intro_box">
+         <p class="title">在i.share，您能十分便捷订阅</p>
+         <p class="title">Netflix高级会员、YouTube家庭组会、Spotify会员</p>
+         <p class="title">多种国际流媒体会员账号</p>
+         <p class="content">非常感谢您对我们的支持和信任！我们将一如既往地秉持对用户负责的态度，不断努力提供高品质、高稳定的产品和服务。
+我们深知用户的需求不断变化，因此我们将继续创新和发展，以满足用户的需求。我们致力于为用户提供更便捷、更优质的服务和产品，让您的体验更加出色和满意。
+感谢您对我们的信任和支持，我们将与您共同迎接更美好的未来。如果您有任何问题或建议，请随时与我们联系。祝愿您拥有愉快的使用体验！</p>
+         <div class="bottom_intro">
+            <div class="linx_cont"></div>
+            <div class="know_more">了解更多</div>
+         </div>
+      </div>
       <div class="only_feats">
-         <p class="title">{{t('only_title')}}</p>
-         <div class="lists">
-            <ul>
-               <li v-for="(item,index) in featsList" :key="index">
-                  <div class="container">
-                     <p class="title">{{item.title}}</p>
-                     <p class="cont">{{item.content}}</p>
-                  </div>
-               </li>
-            </ul>
+         <div class="only_box">
+            <p class="title">{{t('only_title')}}</p>
+            <p class="subtitle">我们为将为您提供专属服务，为您的购物体验提供无忧保障</p>
+            <div class="lists">
+               <ul>
+                  <li v-for="(item,index) in featsList" :key="index">
+                     <div class="container">
+                        <img :src="item.img" alt="">
+                        <p class="title">{{item.title}}</p>
+                        <p class="cont">{{item.content}}</p>
+                     </div>
+                  </li>
+               </ul>
+            </div>
          </div>
       </div>
       <div class="only_feats ques_cont">
@@ -115,7 +135,7 @@ const buyNow = (item)=>{
 
 <style scoped lang="scss">
 .norem-big_box {
-   width: 1200px;
+   width: 100%;
    margin: 0 auto;
    min-height: 100vh;
    .top_content {
@@ -227,8 +247,8 @@ const buyNow = (item)=>{
                p {
                   padding: 8px;
                   border-radius: 8px;
-                  background:  #FFE8ED;
-                  color:  #E94C89;
+                  background:  #F5F5F5;
+                  color:  #838C99;
                   font-size: 14px;
                   font-style: normal;
                   font-weight: 400;
@@ -244,14 +264,17 @@ const buyNow = (item)=>{
                   color:  #EA0010;
                   font-size: 32px;
                   font-style: normal;
-                  font-weight: 400;
+                  font-weight: 700;
                   line-height: 40px; /* 125% */
                }
                .buy {
-                  padding: 8px 16px;
+                  width: 120px;
+                  height: 40px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  background: url("@/assets/pc/home/btn_bg.svg") no-repeat center;
                   cursor: pointer;
-                  border-radius: 8px;
-                  background: #E94C89;
                   color:  #FFF;
                   font-size: 16px;
                   font-style: normal;
@@ -262,75 +285,155 @@ const buyNow = (item)=>{
          }
       }
    }
-   .only_feats {
-      width: 100%;
+   .intro_box {
+      width: 1200px;margin: 0 auto;
+      margin-bottom: 160px;
       .title {
          color:  #1D222A;
-         font-size: 48px;
+         font-size: 32px;
          font-style: normal;
-         font-weight: 600;
-         line-height: 56px; /* 116.667% */
-         margin-bottom: 48px;
+         font-weight: 400;
+         line-height: 120%; /* 38.4px */
+         margin-bottom: 16px;
       }
-      .lists {
+      .content {
+         color:  #1D222A;
+         font-size: 16px;
+         font-style: normal;
+         font-weight: 400;
+         line-height: 32px; /* 200% */
+         width: 718px;
+      }
+      .bottom_intro {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
          width: 100%;
-         ul {
+         margin-top: 32px;
+         gap: 48px;
+         width: 718px;
+         .know_more {
+            width: 160px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url("@/assets/pc/home/btn_empty.svg") no-repeat center;
+            cursor: pointer;
+            color:  #1D222A;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px; /* 150% */
+         }
+         .linx_cont{
+            flex: 1;
+            height: 1px;
+            background: #838C99;
+         }
+      }
+   }
+   .only_feats {
+      width: 100%;
+      background: linear-gradient(180deg, #3B8FDD 0%, #FFC5F3 100%);
+      padding: 160px 0;
+      .only_box {
+         width: 1200px;
+         margin: 0 auto;
+         .title {
+            color:  #fff;
+            font-size: 48px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 56px; /* 116.667% */
+            margin-bottom: 24px;
+            text-align: center;
+         }
+         .subtitle {
+            color: #FFF;
+            text-align: center;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px; /* 150% */
+         }
+         .lists {
             width: 100%;
-            display:flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            li {
-               width: 49%;
-               box-sizing: border-box;
-               padding: 24px;
-               border-radius: 12px;
-               margin-bottom: 24px;
-               .container {
-                  background: #fff;
-                  border-radius: 12px;
-                  padding: 24px;
+            margin-top: 48px;
+            ul {
+               width: 100%;
+               display:flex;
+               justify-content: space-between;
+               flex-wrap: wrap;
+               li {
+                  width: 49%;
                   box-sizing: border-box;
-                  p {
-                     text-align: left;
+                  padding: 24px;
+                  border-radius: 12px;
+                  margin-bottom: 24px;
+                  .container {
+                     // background: #fff;
+                     border-radius: 12px;
+                     padding: 24px;
+                     box-sizing: border-box;
+                     img {
+                        margin-bottom: 12px;
+                     }
+                     p {
+                        text-align: left;
+                     }
+                     .title {
+                        color:  #1D222A;
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: 28px; /* 140% */
+                        margin-bottom: 10px;
+                     }
+                     .cont {
+                        color: #4E596A;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 24px; /* 150% */
+                     }
                   }
-                  .title {
-                     color:  #1D222A;
-                     font-size: 20px;
-                     font-style: normal;
-                     font-weight: 600;
-                     line-height: 28px; /* 140% */
-                     margin-bottom: 10px;
+                  &:nth-child(1) {
+                     border-radius: 12px;
+                     background: linear-gradient(99deg, #B2FDF3 0%, #E2FFDA 100%);
                   }
-                  .cont {
-                     color: #4E596A;
-                     font-size: 16px;
-                     font-style: normal;
-                     font-weight: 500;
-                     line-height: 24px; /* 150% */
+                  &:nth-child(2) {
+                     border-radius: 12px;
+                     background: linear-gradient(99deg, #FCD0BB 0%, #F6D8FA 100%);
                   }
-               }
-               &:nth-child(1) {
-                  border-radius: 12px;
-                  background: linear-gradient(99deg, #B2FDF3 0%, #E2FFDA 100%);
-               }
-               &:nth-child(2) {
-                  border-radius: 12px;
-                  background: linear-gradient(99deg, #FCD0BB 0%, #F6D8FA 100%);
-               }
-               &:nth-child(3) {
-                  border-radius: 12px;
-                  background: linear-gradient(99deg, #FFF8B8 0%, #FFD2E5 100%);
-               }
-               &:nth-child(4) {
-                  border-radius: 12px;
-                  background: linear-gradient(99deg, #EBCCFF 0%, #A6FAFF 100%);
+                  &:nth-child(3) {
+                     border-radius: 12px;
+                     background: linear-gradient(99deg, #FFF8B8 0%, #FFD2E5 100%);
+                  }
+                  &:nth-child(4) {
+                     border-radius: 12px;
+                     background: linear-gradient(99deg, #EBCCFF 0%, #A6FAFF 100%);
+                  }
                }
             }
          }
       }
    }
    .ques_cont {
+      width: 1200px;
+      margin: 0 auto;
       margin-top: 120px;
+      background: none;
+      padding: 0;
+      .title {
+         color:  #1D222A;
+         font-size: 48px;
+         font-style: normal;
+         font-weight: 600;
+         line-height: 64px; /* 133.333% */
+         text-align:center;
+         margin-bottom: 48px;
+      }
       ::v-deep {
          .el-collapse {
             border: none !important;

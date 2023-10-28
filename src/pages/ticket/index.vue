@@ -104,7 +104,7 @@ const ticketsList = ref([
 .norem-big_box {
     width: 1200px;
     margin: 0 auto;
-    margin-top: 136px;
+    margin-top: 196px;
     min-height: 100vh;
     .top_cont {
         .title_box {
@@ -161,7 +161,7 @@ const ticketsList = ref([
             gap: 10px;
             align-items: center;
             p {
-                color:  #E94C89;
+                color:  #016DF3;
                 cursor: pointer;
                 font-size: 16px;
                 font-style: normal;
@@ -231,7 +231,7 @@ const ticketsList = ref([
                             line-height: 24px; /* 150% */
                         }
                         .check_btn {
-                            color:  #E94C89;
+                            color:  #016DF3;
                             font-size: 16px;
                             font-style: normal;
                             font-weight: 600;
@@ -252,11 +252,18 @@ const ticketsList = ref([
                             
                         }
                         .renew_btn {
-                                padding: 8px 24px;
-                                border-radius: 8px;
-                                background: #E94C89;
-                                color: #fff;
-                                cursor: pointer;
+                            width: 120px;
+                            height: 40px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background: url("@/assets/pc/home/btn_bg.svg") no-repeat center;
+                            cursor: pointer;
+                            color:  #FFF;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 600;
+                            line-height: 24px; /* 150% */
                         }
                         .add_svg {
                             display: flex;

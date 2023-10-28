@@ -100,20 +100,34 @@ const router = useRouter()
                 }
             }
             .edit_btn {
-                padding: 8px 24px;
-                border-radius: 8px;
-                border: 1px solid  #E94C89;
-                color: #E94C89;
-                color: #E94C89;
+                width: 120px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: url("@/assets/pc/home/btn_empty.svg") no-repeat center;
+                background-size: 100% 100%;
+                cursor: pointer;
+                color:  #1D222A;
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 600;
                 line-height: 24px; /* 150% */
-                cursor: pointer;
             }
             .invite {
-                color: #fff;
-                background: #E94C89;
+                border: none;
+                width: 120px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: url("@/assets/pc/home/btn_bg.svg") no-repeat center;
+                cursor: pointer;
+                color:  #FFF;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 24px; /* 150% */
             }
         }
         .cancle_border {

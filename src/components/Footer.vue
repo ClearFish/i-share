@@ -7,31 +7,23 @@
            <div class="content_box">
             <div class="left">
                 <img src="@/assets/pc/header/logo.png" alt="">
+                <p>Copyright © 2023 ishare</p>
             </div>
-             <div class="center_menu">
-              <ul>
-                <li v-for="(item,index) in menuList" :key="index"  @click="toUrl(item.url)">
-                  <p>{{item.name}}</p>
-                </li>
-              </ul>
-            </div>
-            <div class="center_menu">
-                <ul>
-                    <li v-for="(item,index) in otherList" :key="index"  @click="toUrl(item.url)">
-                    <p>{{item.name}}</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="links">
-                <p class="title">{{t('concact_us')}}</p>
-                <ul>
-                    <li v-for="(item,index) in linksList" :key="index">
-                        <img :src="item.img" alt="">
+             <div class="right">
+                <div class="links">
+                    <ul>
+                        <li v-for="(item,index) in linksList" :key="index">
+                            <img :src="item.img" alt="">
+                        </li>
+                    </ul>
+                </div>
+                <ul class="menu_box">
+                    <li v-for="(item,index) in menuList" :key="index"  @click="toUrl(item.url)">
+                        <p>{{item.name}}</p>
                     </li>
                 </ul>
             </div>
            </div>
-            <div class="bg"></div>
         </div>
     </div>
 </template>
@@ -51,15 +43,13 @@ const toUrl = (url)=>{
      router.push(url)
 }
 const menuList = computed(()=>[
-  {name:t('home'),url:'/home'},
-  {name:t('ticket'),url:'/ticket'},
-  {name:t('promotion'),url:'/promotion'},
-  {name:t('order'),url:'/order'},
-  {name:t('mine'),url:'/mine'},
-])
-const otherList = computed(()=>[
-  {name:t('terms_use'),url:''},
-  {name:t('help_center'),url:''},
+  {name:t('home'),url:'/home',pathName:["home","goods","pay"]},
+  {name:t('ticket'),url:'/ticket',pathName:["ticket"]},
+  {name:t('promotion'),url:'/promotion',pathName:["promotion"]},
+  {name:t('order'),url:'/order',pathName:["order"]},
+  {name:t('mine'),url:'/mine',pathName:["mine"]},
+  {name:t('help_center'),url:'/order',pathName:["order"]},
+  {name:t('about_us'),url:'/mine',pathName:["mine"]},
 ])
 const linksList = ref([
     {name:'Twitter',img:Twitter},
@@ -73,7 +63,7 @@ const linksList = ref([
     position: relative;
     .norem-container_box {
         width: 100%;
-        height: 450px;
+        height: 254px;
         // position: fixed;
         bottom: 0;
         left: 0;
@@ -85,10 +75,37 @@ const linksList = ref([
             width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
+            align-items: center;
             .left {
-                padding-top: 20px;
-                cursor: pointer;
+                img {
+                    cursor: pointer;
+                }
+                display: flex;
+                flex-direction: column;
+                gap: 88px;
+                color:  #4E596A;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 22px; /* 157.143% */
+            }
+            .right {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 88px;
+                .menu_box {
+                    display: flex;
+                    gap: 48px;
+                    p {
+                         color:  #4E596A;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 22px; /* 157.143% */
+                    }
+                }
             }
             .center_menu {
                 ul {
@@ -126,15 +143,6 @@ const linksList = ref([
                     }
                 }
             }
-        }
-        .bg {
-            position: absolute;
-            width: 1440px;
-            height: 450px;
-            left: 0;
-            bottom: 0;
-            background: url("@/assets/pc/footer/footer_bg.png") no-repeat center;
-            background-size: 100% 100%;
         }
     }
 }

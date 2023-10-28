@@ -54,16 +54,19 @@ const router = useRouter()
             height: 40px;
             align-items: center;
             .btn {
-                border-radius: 8px;
-                color: #fff;
-                padding: 8px 24px;
-                box-sizing: border-box;
-                background:  #E94C89;
+                width: 120px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: url("@/assets/pc/home/btn_empty.svg") no-repeat center;
+                background-size: 100% 100%;
+                cursor: pointer;
+                color:  #1D222A;
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 600;
                 line-height: 24px; /* 150% */
-                cursor: pointer;
             }
             input {
                 width: 258px;

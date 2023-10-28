@@ -151,14 +151,19 @@ let lists = ref([
                         line-height: 24px; /* 150% */
                     }
                     .use_btn{
-                        padding: 8px 24px;
-                        background: #fff;
-                        color: #E94C89;
+                        width: 120px;
+                        height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: url("@/assets/pc/home/btn_white.svg") no-repeat center;
+                        background-size: 100% 100%;
+                        cursor: pointer;
+                        color:  #1D222A;
                         font-size: 16px;
                         font-style: normal;
                         font-weight: 600;
                         line-height: 24px; /* 150% */
-                        border-radius: 12px;
                     }
                 }
             }

@@ -14,6 +14,8 @@ const menuList = computed(()=>[
   {name:t('promotion'),url:'/promotion',pathName:["promotion"]},
   {name:t('order'),url:'/order',pathName:["order"]},
   {name:t('mine'),url:'/mine',pathName:["mine"]},
+  {name:t('help_center'),url:'/order',pathName:["order"]},
+  {name:t('about_us'),url:'/mine',pathName:["mine"]},
 ])
 const langList = ref([
     {name:'简体中文',value:'zh',text:'简体中文'},
@@ -46,16 +48,22 @@ console.log(route,"123123")
         mobile header
     </div>
     <div class="norem-container_box" v-else>
+      <div class="top_pro">
+        <img src="@/assets/pc/header/share.png" alt="">
+        <p class="content">{{$t('share_content')}}</p>
+        <img src="@/assets/pc/header/share.png" alt="">
+      </div>
+      <div class="top_header_box">
         <div class="center_box">
           <div class="left">
             <img src="@/assets/pc/header/logo.png" alt="">
           </div>
-          <div class="center">
+          <!-- <div class="center">
             <img src="@/assets/pc/header/share.png" alt="">
             <p>{{t('share_content')}}</p>
-          </div>
+          </div> -->
         </div>
-        <div class="right">
+        <div class="center">
             <div class="right_menu">
               <ul>
                 <li v-for="(item,index) in menuList" :key="index" :class="item.pathName.includes(route.name) ? 'chosed':''" @click="choesMenu(item,index)">
@@ -63,9 +71,11 @@ console.log(route,"123123")
                 </li>
               </ul>
             </div>
-            <div class="avatar">
-              <img src="@/assets/pc/header/avatar.png" alt="">
-            </div>
+        </div>
+        <div class="right">
+          <div class="avatar">
+            <img src="@/assets/pc/header/avatar.png" alt="">
+          </div>
           <div class="language">
             <el-popover
                 placement="bottom"
@@ -92,9 +102,9 @@ console.log(route,"123123")
                     
                 </div>
             </el-popover>
-            
           </div>
         </div>
+      </div>
     </div>
   </div>
 </template>
@@ -102,104 +112,113 @@ console.log(route,"123123")
 <style scoped lang="scss">
 .norem-container_box {
   width: 100%;
-  height: 96px;
+  
   position: fixed;
   box-sizing: border-box;
   top: 0;
   left: 0;
-  padding: 0 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: #fff;
   z-index: 199;
-  .center_box {
-    width: 58%;
-    display: flex;
-    justify-content: space-between;
-    .left {
-      cursor: pointer;
-    }
-    .center {
-      height: 24px;
-      border-radius: 24px;
-      padding: 12px 24px;
-      background:  #F8E71C;
+  .top_pro {
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(90deg, #FFEC45 0%, #E948AA 51.56%, #8455FF 100%);
       display: flex;
-      gap: 10px;
+      justify-content: center;
       align-items: center;
-      p {
-        color:  #1D222A;
+      gap: 16px;
+      .content {
+        color: #FFF;
         font-size: 16px;
         font-style: normal;
         font-weight: 600;
-        line-height: 24px;
+        line-height: 24px; /* 150% */
       }
     }
-  }
-  .right {
+  .top_header_box {
+     padding: 0 24px;
     display: flex;
-    gap: 36px;
+    justify-content: space-between;
+    height: 96px;
     align-items: center;
-    .right_menu {
-      height: 48px;
-      background: #F5F5F5;
-      border-radius: 4px;
-      padding: 4px;
-      box-sizing: border-box;
-      ul {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        li {
+
+    .center_box {
+      display: flex;
+      justify-content: space-between;
+      .left {
+        cursor: pointer;
+      }
+    }
+    .center {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      .right_menu {
+        height: 48px;
+        // background: #F5F5F5;
+        border-radius: 4px;
+        padding: 4px;
+        box-sizing: border-box;
+        ul {
+          width: 100%;
           height: 100%;
-          padding: 8px 24px;
-          border-radius: 4px;
           display: flex;
-          box-sizing: border-box;
-          justify-content: center;
           align-items: center;
+          li {
+            height: 100%;
+            padding: 8px 24px;
+            border-radius: 4px;
+            display: flex;
+            box-sizing: border-box;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            p {
+              color:  #838C99;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 600;
+            }
+          }
+          .chosed {
+            background: #fff;
+            border-radius: 4px;
+            p {
+              color: #1D222A;
+            }
+          }
+        }
+      }
+
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 16px;
+        cursor: pointer;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .language {
           cursor: pointer;
+        .lang_box {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          img {
+            width: 24px;
+            height: 24px;
+          }
           p {
             color:  #838C99;
             font-size: 16px;
-            font-style: normal;
-            font-weight: 600;
           }
-        }
-        .chosed {
-          background: #fff;
-          border-radius: 4px;
-          p {
-            color: #1D222A;
-          }
-        }
-      }
-    }
-    .avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 16px;
-      cursor: pointer;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    .language {
-        cursor: pointer;
-      .lang_box {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        img {
-          width: 24px;
-          height: 24px;
-        }
-        p {
-          color:  #838C99;
-          font-size: 16px;
         }
       }
     }
