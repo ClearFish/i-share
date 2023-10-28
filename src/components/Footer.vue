@@ -1,7 +1,26 @@
 <template>
     <div class="big_box">
         <div v-if="isMobile" class="m_container_box">
-           mobile footer
+           <div class="content_box">
+            <div class="left">
+                <img src="@/assets/mobile/footer/logo.svg" alt="">
+                <p>Copyright © 2023 ishare</p>
+            </div>
+             <div class="right">
+                <div class="links">
+                    <ul>
+                        <li v-for="(item,index) in linksList" :key="index">
+                            <img :src="item.mimg" alt="">
+                        </li>
+                    </ul>
+                </div>
+                <ul class="menu_box">
+                    <li v-for="(item,index) in menuList" :key="index"  @click="toUrl(item.url)">
+                        <p>{{item.name}}</p>
+                    </li>
+                </ul>
+            </div>
+           </div>
         </div>
         <div class="norem-container_box" v-else>
            <div class="content_box">
@@ -35,6 +54,11 @@ import Twitter from "@/assets/pc/footer/twitter.svg"
 import Ins from "@/assets/pc/footer/ins.svg"
 import Tiktok from "@/assets/pc/footer/tiktok.svg"
 import Bilibili from "@/assets/pc/footer/bilibili.svg"
+
+import MTwitter from "@/assets/mobile/footer/twiter.svg"
+import MIns from "@/assets/mobile/footer/ins.svg"
+import MTiktok from "@/assets/mobile/footer/tiktok.svg"
+import MBilibili from "@/assets/mobile/footer/bilibili.svg"
 const { t } = useI18n()
 const { locale: i18nLanguage } = useI18n()
 const isMobile = inject('isMobile')
@@ -52,10 +76,10 @@ const menuList = computed(()=>[
   {name:t('about_us'),url:'/mine',pathName:["mine"]},
 ])
 const linksList = ref([
-    {name:'Twitter',img:Twitter},
-    {name:'Ins',img:Ins},
-    {name:'Tiktok',img:Tiktok},
-    {name:'Bilibili',img:Bilibili}
+    {name:'Twitter',img:Twitter,mimg:MTwitter},
+    {name:'Ins',img:Ins,mimg:MIns},
+    {name:'Tiktok',img:Tiktok,mimg:MTiktok},
+    {name:'Bilibili',img:Bilibili,mimg:MBilibili}
 ])
 </script>
 <style lang="scss" scoped>
@@ -140,6 +164,48 @@ const linksList = ref([
                     gap: 16px;
                     li {
                         cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    .m_container_box {
+        width: 100%;
+        height: 240px;
+        background: #000;
+        padding: 24px;
+        box-sizing: border-box;
+        .content_box {
+            .left {
+                img {
+                    width: 116px;
+                    height: 40px;
+                }
+                p {
+                    color: #fff;
+                }
+            }
+            .right {
+                .links {
+                    margin-top: 16px;
+                    ul {
+                        display: flex;
+                        gap: 24px;
+                        li {
+                            color: #fff;
+                        }
+                    }
+                }
+                .menu_box {
+                    display: flex;
+                    gap: 24px;
+                    flex-wrap: wrap;
+                    margin-top: 16px;
+                    li {
+                        p {
+                            color: #fff;
+                            font-size: 16px;
+                        }
                     }
                 }
             }

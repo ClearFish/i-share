@@ -39,13 +39,37 @@ const choseLang =(val:string)=>{
 const showChose = ()=>{
     showLange.value = !showLange.value
 }
+let show = ref(false)
 console.log(route,"123123")
 </script>
 
 <template>
   <div :class="isMobile ? 'big_box':'big_box pc_big_box'" :style="changeHeader ? 'background:#F1F3F4':''">
     <div v-if="isMobile" class="m_container_box">
-        mobile header
+      <div class="left">
+        <img src="@/assets/mobile/header/menu_icon.svg" alt="" @click="show = !show">
+        <img src="@/assets/pc/header/logo.png" alt="" class="logo">
+      </div>
+      <div class="right">
+          <div class="avatar">
+            <img src="@/assets/pc/header/avatar.png" alt="">
+          </div>
+      </div>
+      <div :class="show ? 'pop_upbox pop_upbox_show':'pop_upbox'">
+        <div class="mask_box" @click="show = false"></div>
+        <div class="container_box">
+            <div class="top_menu">
+              <ul>
+                <li v-for="(item,index) in menuList" :key="index" :class="item.pathName.includes(route.name) ? 'chosed':''" @click="choesMenu(item,index)">
+                  <p>{{item.name}}</p>
+                </li>
+              </ul>
+            </div>
+            <div class="bottom_language">
+               <div v-for="(item,index) in langList" :key="index" class="language_item">{{item.name}}</div>
+            </div>
+        </div>
+      </div>
     </div>
     <div class="norem-container_box" v-else>
       <div class="top_pro">
@@ -112,7 +136,6 @@ console.log(route,"123123")
 <style scoped lang="scss">
 .norem-container_box {
   width: 100%;
-  
   position: fixed;
   box-sizing: border-box;
   top: 0;
@@ -218,6 +241,135 @@ console.log(route,"123123")
           p {
             color:  #838C99;
             font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+.m_container_box {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 3199;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  .left {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+    z-index: 999;
+    .logo {
+      width: 116px;
+      height: 30px;
+    }
+  }
+  .pop_upbox {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    transition:height 1s ease;
+    height: 0;
+    overflow: hidden;
+    .mask_box {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, .7);
+      transition:opacity .5s ease;
+      opacity: 0;
+      height: 0;
+    }
+    .container_box {
+      position: absolute;
+      height: 0;
+      transition:height 1s ease;
+      top: 79px;
+      width: 100%;
+      left: 0;
+      background: #fff;
+      overflow: hidden;
+      padding: 0 16px;
+      box-sizing: border-box;
+      .top_menu {
+        position: relative;
+        ul {
+          li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 48px;
+            opacity: 0;
+            transition:opacity 1s ease;
+            p {
+              color: #838C99;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 24px; /* 150% */
+            }
+          }
+        }
+        &::after {
+          content: '';
+          width: 100%;
+          height: 1px;
+          border-top: 2px dotted #EDEFF2;
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+        }
+      }
+      .bottom_language {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 23px;
+        .language_item {
+          width: 120px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: url("@/assets/pc/home/btn_bg.svg") no-repeat center;
+          cursor: pointer;
+          color:  #FFF;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 24px; /* 150% */
+        }
+      }
+    }
+  }
+  .pop_upbox_show {
+    height: 100vh;
+    z-index: 123;
+    transition:height 1s ease;
+    .mask_box {
+      opacity: 1;
+      transition:opacity .5s ease;
+      height: 100vh;
+    }
+    .container_box {
+      transition:height 1s ease;
+      height: 410px;
+      .top_menu {
+        ul {
+          li {
+            opacity: 1;
+            transition:height 1s ease;
           }
         }
       }
