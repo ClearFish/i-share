@@ -40,11 +40,10 @@ const showChose = ()=>{
     showLange.value = !showLange.value
 }
 let show = ref(false)
-console.log(route,"123123")
 </script>
 
 <template>
-  <div :class="isMobile ? 'big_box':'big_box pc_big_box'" :style="changeHeader ? 'background:#F1F3F4':''">
+  <div :class="isMobile ? 'big_box':'big_box pc_big_box'">
     <div v-if="isMobile" class="m_container_box">
       <div class="left">
         <img src="@/assets/mobile/header/menu_icon.svg" alt="" @click="show = !show">

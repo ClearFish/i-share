@@ -82,5 +82,7 @@ export default {
     pay_info: "您的订单已提交成功，请尽快完成支付",
     pay_goods: "付款商品",
     receive_name: "收款方",
-    goods_price: "商品总价"
+    goods_price: "商品总价",
+    no_account: "还没有账户",
+    create_account: "创建账户"
 }

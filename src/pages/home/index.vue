@@ -54,8 +54,9 @@ const quesList = ref([
 const activeNames = ref([0])
 const buyNow = (item)=>{
    router.push({
-      path:"/goods",
-      query:{id:item.buyNum}
+      // path:"/goods",
+      // query:{id:item.buyNum}
+      path:"/login"
    })
 }
 </script>
