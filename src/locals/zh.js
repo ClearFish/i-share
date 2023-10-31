@@ -84,5 +84,17 @@ export default {
     receive_name: "收款方",
     goods_price: "商品总价",
     no_account: "还没有账户",
-    create_account: "创建账户"
+    create_account: "创建账户",
+    login_your_account: "登录你的账户",
+    wechat_login: "微信登录",
+    google_login: "谷歌登录",
+    phone_or_email: "手机号码或邮箱地址",
+    password: "密码",
+    remember_account: "记住账号",
+    forget_password: "忘记密码",
+    login: "登录",
+    create_your_account: "创建你的账户",
+    sure_password: "确认密码",
+    has_account: "已有账户",
+    login_now: "立即登录"
 }

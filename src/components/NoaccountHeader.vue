@@ -38,9 +38,13 @@ const showChose = ()=>{
         </div>
         <div class="right">
           <div class="avatar">
-            <div class="account">
+            <div class="account" v-if="route.fullPath == '/login'">
               <p>{{t('no_account')}}?</p>
               <p class="create">{{t('create_account')}}</p>
+            </div>
+            <div class="account" v-else>
+              <p>{{t('has_account')}}?</p>
+              <p class="create">{{t('login_now')}}</p>
             </div>
           </div>
           <div class="language">
@@ -79,6 +83,9 @@ const showChose = ()=>{
 <style scoped lang="scss">
 .big_box {
     width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .norem-container_box {
   width: 100%;

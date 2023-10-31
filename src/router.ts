@@ -7,7 +7,8 @@ import Order from "@/pages/order/index.vue"
 import Mine from "@/pages/mine/index.vue"
 import Goods from "@/pages/goods/index.vue"
 import Pay from "@/pages/pay/index.vue"
-import Login from "@/pages/login-register/login.vue"
+import Login from "@/pages/login-register/login/index.vue"
+import Register from "@/pages/login-register/register/index.vue"
 const router = createRouter({
         history:createWebHashHistory(),
         routes:[
@@ -63,13 +64,18 @@ const router = createRouter({
                 path:'/login',
                 component:Login
             },
+            {
+                name:'register',
+                path:'/register',
+                component:Register
+            },
         ]
     
 })
 router.afterEach((to,from,next)=>{
     const store = useStore()
     console.log(to,store,"123123")
-    const hideArr = ['/login','/register']
+    const hideArr = ['/login','/register','resetpassword']
     if(hideArr.includes(to.fullPath)) {
         store.commit('setShowHeaderFooter',false)
     }else {
