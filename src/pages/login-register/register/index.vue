@@ -2,7 +2,7 @@
     <div :class="isMobile ? 'norem-big_box m_big_box':'norem-big_box'">
         <div class="left"></div>
         <div class="right">
-            <NoaccountHeader/>
+            <AccountHeader/>
             <InputComponents/>
         </div>
     </div>
@@ -12,7 +12,7 @@ import { computed, onMounted, reactive, ref, inject  } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from "vue-router";
 import Img from '@/assets/pc/home/neft.svg'
-import NoaccountHeader from "@/components/accountHeader.vue"
+import AccountHeader from "@/components/accountHeader.vue"
 import InputComponents from "./InputComponents.vue"
 const { t } = useI18n()
 const isMobile = inject('isMobile')
