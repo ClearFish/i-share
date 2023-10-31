@@ -96,5 +96,13 @@ export default {
     create_your_account: "创建你的账户",
     sure_password: "确认密码",
     has_account: "已有账户",
-    login_now: "立即登录"
+    login_now: "立即登录",
+    get_code: "获取验证码",
+    get_code_subtitle: "输入您注册时使用的手机号码或者电子邮件地址，我们将向您发送重新设置密码的验证码",
+    phone_number: "手机号",
+    email_number: "电子邮箱",
+    authen_code: "验证码",
+    send_code: "发送验证码",
+    next_step: "下一步",
+    confirm: "确定"
 }
