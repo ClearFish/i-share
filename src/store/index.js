@@ -1,7 +1,8 @@
 import { createStore } from "vuex";
 export default createStore({
     state: {
-        showHeaderFooter: true
+        showHeaderFooter: true,
+        showFooter: true
     },
     getters: {
 
@@ -12,6 +13,9 @@ export default createStore({
     mutations: {
         setShowHeaderFooter(state, paylod) {
             state.showHeaderFooter = paylod
+        },
+        setShowFooter(state, paylod) {
+            state.showFooter = paylod
         }
     }
 })

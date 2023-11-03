@@ -2,8 +2,14 @@
     <div :class="isMobile ? 'norem-big_box m_big_box':'norem-big_box'">
         <div class="top_cont">
             <div class="title_box">
-                <img src="@/assets/pc/ticket/car.png" alt="">
-                <p class="title">{{t('my_ticket')}}</p>
+                <div class="head_box">
+                    <img src="@/assets/pc/ticket/car.png" alt="">
+                    <p class="title">{{t('my_ticket')}}</p>
+                </div>
+                <div v-if="isMobile" class="head_box">
+                    <img src="@/assets/pc/ticket/group.png" alt="">
+                    <p>{{t('join_group')}}</p>
+                </div>
             </div>
             <div class="cont_box">
                 <div class="title_list">
@@ -13,7 +19,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="group">
+                <div class="group" v-if="!isMobile">
                     <img src="@/assets/pc/ticket/group.png" alt="">
                     <p>{{t('join_group')}}</p>
                 </div>
@@ -287,6 +293,47 @@ const ticketsList = ref([
                         }
                     }
                 }
+            }
+        }
+    }
+}
+.m_big_box {
+    margin-top: 120px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    width: 100%;
+    .top_cont {
+        .title_box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .head_box {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                 p {
+                    color:  #016DF3;
+                    cursor: pointer;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 24px; /* 150% */
+                }
+                .title {
+                    font-size: 20px;
+                    color: #000;
+                }
+            }
+        }
+    }
+    .list_box {
+        width: 100%;
+        ul {
+            width: 100%;
+            flex-direction: column;
+            li {
+                width: 100%;
+                box-sizing: border-box;
             }
         }
     }

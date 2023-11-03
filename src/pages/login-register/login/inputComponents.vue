@@ -5,7 +5,7 @@
             <ul class="types_container">
                 <li v-for="(item,index) in accountTypes" :key="index">  
                     <img :src="item.imgUrl" alt="">
-                    <p class="name" v-if="item.name">{{item.name}}</p>
+                    <p class="name" v-if="item.name && isMobile">{{item.name}}</p>
                 </li>
             </ul>
             <div class="bottom_line">
@@ -170,6 +170,15 @@ const rememberAccount = ref(false)
         font-weight: 400;
         line-height: 24px; /* 150% */
         padding: 0 16px;
+    }
+}
+.m_big_box {
+    width: 100%;
+    .top_content {
+        width: 100%;
+    }
+    .login_container {
+        width: 100%;
     }
 }
 </style>

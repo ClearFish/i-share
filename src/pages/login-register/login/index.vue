@@ -1,8 +1,8 @@
 <template>
     <div :class="isMobile ? 'norem-big_box m_big_box':'norem-big_box'">
-        <div class="left"></div>
+        <div class="left" v-if="!isMobile"></div>
         <div class="right">
-            <AccountHeader/>
+            <AccountHeader v-if="!isMobile"/>
             <InputComponents/>
         </div>
     </div>
@@ -14,6 +14,7 @@ import { useRouter } from "vue-router";
 import Img from '@/assets/pc/home/neft.svg'
 import AccountHeader from "@/components/accountHeader.vue"
 import InputComponents from "./InputComponents.vue"
+import TgLogin from "@/components/tgLogin.vue"
 const { t } = useI18n()
 const isMobile = inject('isMobile')
 const router = useRouter()
@@ -34,5 +35,10 @@ const router = useRouter()
         flex: 1;
         position: relative;
     }
+}
+.m_big_box {
+    padding: 0 16px;
+    box-sizing: border-box;
+    width: 100%;
 }
 </style>

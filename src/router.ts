@@ -10,6 +10,8 @@ import Pay from "@/pages/pay/index.vue"
 import Login from "@/pages/login-register/login/index.vue"
 import Register from "@/pages/login-register/register/index.vue"
 import Reset from "@/pages/login-register/reset/index.vue"
+const hideArr:any = ['/login','/register','/reset']
+const flag:boolean = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
 const router = createRouter({
         history:createWebHashHistory(),
         routes:[
@@ -80,12 +82,18 @@ const router = createRouter({
 })
 router.afterEach((to,from,next)=>{
     const store = useStore()
-    console.log(to,store,"123123")
-    const hideArr = ['/login','/register','/reset']
-    if(hideArr.includes(to.fullPath)) {
-        store.commit('setShowHeaderFooter',false)
+    if(!flag) {
+        if(hideArr.includes(to.fullPath)) {
+            store.commit('setShowHeaderFooter',false)
+        }else {
+            store.commit('setShowHeaderFooter',true)
+        }
     }else {
-        store.commit('setShowHeaderFooter',true)
+        if(hideArr.includes(to.fullPath)) {
+            store.commit('setShowFooter',false)
+        }else {
+            store.commit('setShowFooter',true)
+        }
     }
     window.scrollTo(0,0)
 })

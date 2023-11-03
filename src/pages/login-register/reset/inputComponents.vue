@@ -212,4 +212,16 @@ const mobileAuthen = (type)=>{
         padding: 0 16px;
     }
 }
+.m_big_box {
+    width: 100%;
+    .top_content {
+        width: 100%;
+        .subtitle {
+            width: 100%;
+        }
+    }
+    .login_container {
+        width: 100%;
+    }
+}
 </style>

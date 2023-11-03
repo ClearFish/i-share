@@ -7,12 +7,15 @@ const sotre = useStore()
 const showVal = computed(()=>{
   return sotre.state.showHeaderFooter
 })
+const showFooter = computed(()=>{
+  return sotre.state.showFooter
+})
 </script>
 
 <template>
   <Header v-if="showVal"/>
     <router-view />
-  <Footer v-if="showVal"/>
+  <Footer v-if="showVal && showFooter"/>
 </template>
 
 <style scoped>

@@ -470,4 +470,74 @@ const buyNow = (item)=>{
       }
    }
 }
+.m_big_box {
+   padding: 0 16px;
+   box-sizing: border-box;
+   .top_content {
+      margin-top: 120px;
+      .title {
+         font-size: 36px;
+         line-height: 48px;
+      }
+   }
+   .title_list {
+      margin-top: 42px;
+      ul {
+         width: 100%;
+         overflow-x: scroll;
+         li {
+            flex-shrink: 0;
+         }
+      }
+   }
+   .goods_box {
+      width: 100%;
+      ul {
+         width: 100%;
+         flex-direction: column;
+         li {
+            width: 100%;
+         }
+      }
+   }
+   .intro_box {
+      width: 100%;
+      .title {
+         font-size: 26px;
+      }
+      .content {
+         width: 100%;
+      }
+      .bottom_intro {
+         width: 100%;
+      }
+   }
+   .only_feats {
+      padding: 40px 16px;
+      box-sizing: border-box;
+      .only_box {
+         width: 100%;
+         .title {
+            font-size: 36px;
+         }
+         .lists {
+            width: 100%;
+            ul {
+               width: 100%;
+               flex-direction: column;
+               li {
+                  width: 100%;
+               }
+            }
+         }
+      }
+   }
+   .ques_cont {
+      width: 100%;
+      margin-top: 80px;
+      .title {
+         font-size: 36px;
+      }
+   }
+}
 </style>

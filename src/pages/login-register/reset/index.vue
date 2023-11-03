@@ -1,8 +1,8 @@
 <template>
     <div :class="isMobile ? 'norem-big_box m_big_box':'norem-big_box'">
-        <div class="left"></div>
+        <div class="left" v-if="!isMobile"></div>
         <div class="right">
-            <AccountHeader/>
+            <AccountHeader v-if="!isMobile"/>
             <InputComponents/>
         </div>
     </div>
@@ -34,5 +34,10 @@ const router = useRouter()
         flex: 1;
         position: relative;
     }
+}
+.m_big_box {
+    padding: 0 16px;
+    box-sizing: border-box;
+    width: 100%;
 }
 </style>

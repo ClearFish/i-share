@@ -177,4 +177,64 @@ const progressList = ref([
         }
     }
 }
+.m_big_box {
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+    
+    .top_title {
+        margin-top: 120px;
+        width: 100%;
+        p {
+            font-size: 32px;
+        }
+    }
+    .link_boc {
+        width: 100%;
+        flex-direction: column;
+        height:  auto;
+        background: none;
+        .link {
+            width: 100%;
+            background: #F5F5F5;
+            height: 48px;
+            border-radius: 8px;
+            line-height: 48px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .copy_btn {
+            width: 100%;
+            margin-top: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+    }
+    .progress_box {
+        width: 100%;
+        box-sizing: border-box;
+        height: auto;
+        margin-bottom: 40px;
+        padding: 40px;
+        ul {
+            flex-direction: column;
+            width: 100%;
+            gap: 80px;
+            li {
+                img {
+                    margin-bottom: 16px;
+                }
+                &::after {
+                    top: 0;
+                    top: 150%;
+                    width: 40px;
+                    left: 36%;
+                    transform: rotateZ(90deg);
+                }
+            }
+        }
+    }
+}
 </style>
