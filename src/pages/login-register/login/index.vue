@@ -13,7 +13,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from "vue-router";
 import Img from '@/assets/pc/home/neft.svg'
 import AccountHeader from "@/components/accountHeader.vue"
-import InputComponents from "./InputComponents.vue"
+import InputComponents from "./inputComponents.vue"
 import TgLogin from "@/components/tgLogin.vue"
 const { t } = useI18n()
 const isMobile = inject('isMobile')

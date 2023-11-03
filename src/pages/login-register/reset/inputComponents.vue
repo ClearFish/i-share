@@ -223,5 +223,9 @@ const mobileAuthen = (type)=>{
     .login_container {
         width: 100%;
     }
+    .login_btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
 </style>
