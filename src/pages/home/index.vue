@@ -1,7 +1,6 @@
 <script setup>
 import { computed, onMounted, reactive, ref, inject  } from 'vue'
 import { useI18n } from 'vue-i18n'
-import {getAuth} from "@/api/index.js"
 import { useRouter } from "vue-router";
 import Img from '@/assets/pc/home/neft.svg'
 import Img1 from '@/assets/pc/home/img1.svg'
@@ -11,9 +10,6 @@ import Img4 from '@/assets/pc/home/img4.svg'
 const { t } = useI18n()
 const isMobile = inject('isMobile')
 const router = useRouter()
-const getImg = async()=>{
-   let res = await getAuth()
-}
 const toUrl = (url)=>{
    router.push(url)
 }
@@ -125,7 +121,7 @@ const buyNow = (item)=>{
       </div>
       <div class="only_feats ques_cont">
          <p class="title">{{t('normal_ques')}}</p>
-          <el-collapse v-model="activeNames" @change="handleChange">
+          <el-collapse v-model="activeNames">
              <el-collapse-item :title="item.title" :name="index" v-for="(item,index) in quesList" :key="index">
                <div class="item_content">{{item.answer}}</div>
              </el-collapse-item>

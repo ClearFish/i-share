@@ -14,11 +14,15 @@ export default defineConfig({
     cors: true,
     // https: true,
     proxy: {
-      "/api": {
-        target: 'http://10.15.25.143:81',
+      "/auth": {
+        target: 'http://test.as-z.net',
         changeOrigin: true,
         // secure: false
       },
+      "/api": {
+        target: 'http://test.as-z.net',
+        changeOrigin: true,
+      }
     }
   },
   css: {

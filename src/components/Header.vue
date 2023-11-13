@@ -3,11 +3,13 @@ import { ref,computed,inject, watch } from 'vue'
 import {ElPopover} from "element-plus"
 import { useI18n } from 'vue-i18n'
 import { useRouter,useRoute } from "vue-router";
+import {useStore } from "vuex"
 const { t } = useI18n()
 const { locale } = useI18n()
 const isMobile = inject('isMobile')
 const router = useRouter()
 const route = useRoute()
+const sotre = useStore()
 const menuList = computed(()=>[
   {name:t('home'),url:'/home',pathName:["home","goods","pay"]},
   {name:t('ticket'),url:'/ticket',pathName:["ticket"]},
@@ -40,6 +42,12 @@ const showChose = ()=>{
     showLange.value = !showLange.value
 }
 let show = ref(false)
+const userInfo = computed(()=>{
+  return sotre.state.userInfo
+})
+const toPath =(item) =>{
+  router.push(item)
+}
 </script>
 
 <template>
@@ -81,10 +89,6 @@ let show = ref(false)
           <div class="left">
             <img src="@/assets/pc/header/logo.png" alt="">
           </div>
-          <!-- <div class="center">
-            <img src="@/assets/pc/header/share.png" alt="">
-            <p>{{t('share_content')}}</p>
-          </div> -->
         </div>
         <div class="center">
             <div class="right_menu">
@@ -96,8 +100,13 @@ let show = ref(false)
             </div>
         </div>
         <div class="right">
-          <div class="avatar">
+          <div class="avatar" v-if="userInfo && userInfo.username">
             <img src="@/assets/pc/header/avatar.png" alt="">
+            <p class="name_box">{{userInfo.username}}</p>
+          </div>
+          <div class="avatar login_register" v-else>
+            <div class="login" @click="toPath('/login')">{{t('login')}}</div>
+            <div class="login register" @click="toPath('/register')">{{t('register')}}</div>
           </div>
           <div class="language">
             <el-popover
@@ -218,13 +227,41 @@ let show = ref(false)
       align-items: center;
       gap: 36px;
       .avatar {
-        width: 32px;
+        // width: 32px;
         height: 32px;
         border-radius: 16px;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        p {
+          font-size: 14px;
+          color: #333;
+          font-weight: 700;
+        }
         img {
           width: 100%;
           height: 100%;
+        }
+      }
+      .login_register {
+        .login {
+          width: 92px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #000;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          background: url("@/assets/pc/home/btn_empty.svg") no-repeat center;
+          background-size: 100%;
+        }
+        .register {
+          color: #fff;
+          background: url("@/assets/pc/home/btn_bg.svg") no-repeat center;
+          background-size: 100%;
         }
       }
       .language {

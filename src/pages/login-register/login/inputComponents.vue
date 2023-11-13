@@ -15,11 +15,11 @@
         <div class="login_container">
             <div class="input_box">
                 <p class="title">{{t('phone_or_email')}}</p>
-                <input />
+                <input v-model="username"/>
             </div>
             <div class="input_box">
                 <p class="title">{{t('password')}}</p>
-                <input type="password"/>
+                <input type="password" v-model="password"/>
             </div>
             <div class="bottom_cont">
                 <div class="top_act">
@@ -27,7 +27,7 @@
                 </div>
                 <p class="forget_psd">{{t('forget_password')}}</p>
             </div>
-            <div class="login_btn">{{t('login')}}</div>
+            <div class="login_btn" @click="toLogin">{{t('login')}}</div>
         </div>
     </div>
 </template>
@@ -38,7 +38,11 @@ import Img1 from "@/assets/pc/login/wechat.svg"
 import Img2 from "@/assets/pc/login/google.svg"
 import Img3 from "@/assets/pc/login/facebook.svg"
 import Img4 from "@/assets/pc/login/telegram.svg"
+import api from "@/api/index.js"
+import { useRouter } from "vue-router";
+import {useStore } from "vuex"
 const { t } = useI18n()
+const router = useRouter()
 const accountTypes = computed(()=>{
     return [
         {name:t('wechat_login'),imgUrl:Img1},
@@ -47,6 +51,23 @@ const accountTypes = computed(()=>{
         {name:'',imgUrl:Img4}
     ]
 })
+const isMobile = inject('isMobile')
+const password = ref('');
+const username = ref('');
+const store = useStore()
+const toLogin = async()=>{
+    let formData = new FormData();
+    let obj = {
+        username:username.value,
+        password:password.value,
+        scope:"server",
+        grant_type:"password"
+    }
+    let res = await store.dispatch("logIn",obj)
+    if(res.user_id) {
+        router.push('/')
+    }
+}
 const rememberAccount = ref(false)
 </script>
 <style lang="scss" scoped>
@@ -158,6 +179,7 @@ const rememberAccount = ref(false)
             border-radius: 12px;
             background: #E94C89;
             font-size: 16px;
+            cursor: pointer;
         }
     }
     input {

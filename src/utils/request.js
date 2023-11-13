@@ -1,5 +1,6 @@
 import axios from 'axios';
-
+import { ElMessage, ElMessageBox } from "element-plus"
+import store from "../store"
 // 创建 axios 实例
 const service = axios.create({
     baseURL: '/', // api 的基础 url
@@ -11,6 +12,17 @@ service.interceptors.request.use(
     config => {
         // 在发送请求之前做些什么
         // 例如添加请求头，身份验证等
+        const token = localStorage.getItem("access_token");
+        config.headers['Authorization'] = `Basic ${token}`;
+        const urls = ['/auth/oauth2/token'];
+        const inUrl = urls.some((url) => config.url?.includes(url))
+        if (inUrl) {
+            // config.headers['Proxy-Authorization'] = 'Basic TXV6V25jZVgyQks5QktiSEtuU05ZYjNhOmNyWEN0V0Y0QVI3cnEzVGR1OGg4ZWVzeQ=='
+            Object.assign(config.headers, {
+                "Authorization": localStorage.getItem('access_token') || 'Basic YXBwOmFwcA==',
+            })
+        }
+        config.headers['Accept'] = `*/*`;
         return config;
     },
     error => {
@@ -18,7 +30,7 @@ service.interceptors.request.use(
         return Promise.reject(error);
     }
 );
-
+let message
 // 响应拦截器
 service.interceptors.response.use(
     response => {
@@ -29,6 +41,27 @@ service.interceptors.response.use(
     error => {
         // 对响应错误做点什么
         // 例如统一处理错误，给用户反馈等
+        switch (error.response.status) {
+            case 500:
+                ElMessage({
+                    message: '服务器错误',
+                    type: "error"
+                })
+                break;
+            case 401:
+                message = ElMessageBox.confirm("登录状态已过期，请重新登录！", "系统提示", {
+                    confirmButtonText: "重新登录",
+                    cancelButtonText: "取 消",
+                    type: "warning"
+                }).then(() => {
+                    store.dispatch("LogOut").then(() => {
+                        location.href = "/index"
+                    })
+                })
+                break;
+            default:
+                break;
+        }
         return Promise.reject(error);
     }
 );

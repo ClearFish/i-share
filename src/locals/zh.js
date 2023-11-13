@@ -93,6 +93,7 @@ export default {
     remember_account: "记住账号",
     forget_password: "忘记密码",
     login: "登录",
+    register: "注册",
     create_your_account: "创建你的账户",
     sure_password: "确认密码",
     has_account: "已有账户",
